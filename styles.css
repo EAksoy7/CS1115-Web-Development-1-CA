@@ -1,0 +1,265 @@
+@font-face {
+    font-family: 'Courier Prime';
+    src: url('font/CourierPrime-Regular.woff') format('woff');
+}
+
+@viewport {
+    width: device-width;
+}
+
+/* Based on: https://www.amitmerchant.com/simple-blinking-cursor-animation-using-css/ */
+@keyframes blink { 
+    0% {
+        opacity: 0;
+    }
+}
+
+/* Based on https://css-tricks.com/snippets/css/typewriter-effect/ */
+@keyframes typing {
+    from {
+        width: 0%
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+
+
+.blink::after {
+    display: inline-block;
+    content: "";
+    width: 0.5em;
+    height: 0.9em;
+    background-color: var(--txt-colour1);
+    animation: blink 1s steps(2) infinite;
+}
+
+.hoverButton {
+    position: relative;
+    display: block;
+    width: 68%;
+    padding: 3%;
+    margin: 3px auto;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s linear;
+}
+
+.headerLine {
+    max-width: 100%;
+}
+
+.gallery img {
+    max-width: 70%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+html {
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    --bg-colour1: #141714;
+    --txt-colour1: #0F0;
+    font-size: 100%;
+    color: var(--txt-colour1);
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url(images/scanlineimage.png);
+    background-color: var(--bg-colour1);
+}
+
+header {
+    text-align: center;
+    width: 95%;
+    padding: 1% 0% 1% 1%;
+    border-style: solid;
+    border-width: 3px;
+    border-color: var(--txt-colour1);
+    margin: 0 auto;
+}
+
+footer {
+    text-align: right;
+}
+
+h1 {
+    font-size: 1.2em;
+}
+
+h2 {
+    font-size: 1.15em;
+}
+
+h3 {
+    font-size: 1.1em;
+}
+
+small {
+    font-size: 0.9em;
+}
+
+table {
+    width: 100%;
+}
+
+caption {
+    text-align: left;
+}
+
+a {
+    transition: all 0.5s;
+    color: var(--bg-colour1);
+    background-color: var(--txt-colour1);
+}
+
+table,
+th,
+td {
+    border: 2px solid var(--txt-colour1);
+    border-collapse: collapse;
+}
+
+
+figure {
+    text-align: center;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
+    border: solid 2px var(--txt-colour1);
+    background-color: var(--bg-colour1);
+}
+
+@media screen and (min-width: 450px) {
+
+    #headerHeading {
+        overflow: hidden;
+        margin: 0 auto;
+        animation: typing 2s steps(40, end);
+        white-space: nowrap;
+    }
+
+}
+
+@media screen and (min-width: 700px) {
+
+    nav {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #work>section {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-column-gap: 5px;
+        grid-row-gap: 5px;
+    }
+
+    #texgal>section{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 5px;
+        grid-row-gap: 5px;
+    }
+        
+}
+
+
+
+@media screen and (min-width: 1000px) {
+
+
+
+    .hoverButton {
+        margin: 0;
+    }
+
+
+    .gallery img {
+        max-width: 60%;
+        display: inline;
+        height: auto;
+    }
+
+    body {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+        grid-template-areas: "top top" "left right" "bottom bottom";
+    }
+
+    header {
+        width: 60%;
+        grid-area: top;
+    }
+
+    main {
+        grid-area: right;
+        display: grid;
+    }
+
+    header + nav {
+        display: block;
+        grid-area: left;
+        position: fixed;
+        margin-top: 2%;
+        width: 21%;
+    }
+
+    footer {
+        grid-area: bottom;
+    }
+
+
+    h1 {
+        font-size: 1.7em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        font-size: 1.2em;
+    }
+
+}
+
+@media (hover: hover) {
+
+    .hoverButton:hover {
+        transform: translateX(5%);
+    }
+
+    a {
+        color: var(--txt-colour1);
+        background-color: transparent;
+    }
+
+    .hoverButton:hover,
+    p a:hover, li>a:hover {
+        color: var(--bg-colour1);
+        background-color: var(--txt-colour1);
+    }
+
+    .gallery p {
+        display: none;
+        color: var(--bg-colour1);
+        background-color: var(--txt-colour1);
+    }
+
+    .gallery img {
+        max-width: 40%;
+    }
+
+    a:hover+p {
+        display: block;
+    }
+
+}
